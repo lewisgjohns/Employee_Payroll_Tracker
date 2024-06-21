@@ -1,34 +1,42 @@
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
-
+//collectEmployees function, includes empty 'employeesArray' array and 'addEmployee' boolean varibale//
 const collectEmployees = function() {
   let employeesArray = [];
   let addEmployee = true;
   
+  //while loop that will continue as long as 'addEmployee is true//
   while (addEmployee){
+    //prompts user to add details in window box//
     let firstName = window.prompt("Enter first name of employee:");
     let lastName = window.prompt("Enter last name of employee:");
+    //parsefloat is used to convert a string number into a number with decimal places//
     let salary = parseFloat(window.prompt("Enter salary of employee:")); 
 
+    //checks is firstName and lastName are truthy, and makes sure salary is a valid number using !isNaN(salary)//
     if (firstName && lastName && !isNaN(salary)) {
  
-      //Object//
+      //employee object//
       let employee = {
         firstName: firstName,
         lastName: lastName,
         salary: salary,
       };
 
+      //adds employee object to the employees array//
       employeesArray.push(employee);
 
+      //asks if user wants to add another employee, if not the loop is now false and ends//
       addEmployee = window.confirm("Do you want to add another employee?");
     } 
     
+    //if any of the inputs are missing or invalid the window will display the string message//
     else {
       window.alert("Invalid input. Please enter valid information.");
     }
   }
 
+  //ends the function and returns the employeesArray to the caller//
   return employeesArray;
 }
 
@@ -66,11 +74,6 @@ const getRandomEmployee = function (employeesArray) {
   console.log(`Last Name: ${randomEmployee.lastName}`);
   console.log(`Salary: ${randomEmployee.salary}`);
 };
-
-// const employees = collectEmployees();
-// displayAverageSalary(employees);
-// getRandomEmployee(employees);
-
 
 
 
