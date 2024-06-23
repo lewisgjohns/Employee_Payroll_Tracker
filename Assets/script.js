@@ -40,35 +40,42 @@ const collectEmployees = function() {
   return employeesArray;
 }
 
+//function to display average salary//
 const displayAverageSalary = function (employeesArray) {
   let totalSalary = 0;
+//forEach method used to iterate over each element in the employeesArray
   employeesArray.forEach(function (employee) {
+    //accumulates the salary of each employee//
     totalSalary += employee.salary;
   });
 
+  //if the length of the employeesArray is greater than 0 then the average salary will be calculated by dividing the sum of all salaries in the employeesArray by number of employees//
   let averageSalary = 0;
   if (employeesArray.length > 0) {
     averageSalary = totalSalary / employeesArray.length;
   }
-
+  
+  //prints average salary to the console with the averageSalary variable fixed to 2 decimal points//
   console.log(`Average Salary: ${averageSalary.toFixed(2)}`);
 };
 
-
+//function to choose random eomployee using callback function employeesArray//
 const getRandomEmployee = function (employeesArray) {
 
+  //if the length of the employeesArray is equal to 0 then it will print in the console the text string//
   if (employeesArray.length === 0) {
     console.log("No employees found.");
     return;
   }
 
- 
+ //accesses a random element from the employeesArray. Math.random will generate a floating point number between 0 and 1, and Math.floor will round it down to a whole number
   const randomIndex = Math.floor(Math.random() * employeesArray.length);
 
-
+//accesses the generated value from randomIndex in the employeesArray
   const randomEmployee = employeesArray[randomIndex];
 
 
+  //logs to the console chosen random employee details
   console.log("Random Employee:");
   console.log(`First Name: ${randomEmployee.firstName}`);
   console.log(`Last Name: ${randomEmployee.lastName}`);
